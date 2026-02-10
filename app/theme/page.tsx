@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import AshesRemain from "../AshesRemain/page"
 import { ArrowRight } from "lucide-react"
 
 export default function ThemePage() {
