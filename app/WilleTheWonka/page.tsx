@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import AshesRemain from "../AshesRemain/page"
 import { ArrowRight } from "lucide-react"
 
 export default function ThemePage() {
@@ -23,14 +22,14 @@ export default function ThemePage() {
               </span>
 
               <h1 className="text-5xl md:text-7xl font-black mt-4 mb-6">
-                <span className="text-accent">one</span> +{" "}
-                <span className="text-foreground">One</span>
-                <span className="text-accent">=</span>
-                <span className="text-accent">three</span>
+                <span className="text-foreground">Living</span> 
+                <span className="text-foreground"> the</span>{" "}
+                <span className="text-accent">Wonka</span>
+                <span className="text-accent"> World</span>
               </h1>
 
               <p className="text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto md:mx-0">
-                Our theme explores how diverse viewpoints come together to create a richer understanding of our world.
+                This theme encourages individuals to embrace their inner child, unleash their imagination, and rediscover the joy of playful thinking. It invites the audience to explore how creativity and wonder can transform everyday experiences.
               </p>
             </div>
 
@@ -46,7 +45,7 @@ export default function ThemePage() {
                 md:w-[340px]
               ">
                 <img
-                  src="/theme.png"
+                  src="/wonka.jpeg"
                   alt="Theme Poster"
                   className="w-full h-auto rounded-xl object-contain"
                 />
@@ -67,21 +66,16 @@ export default function ThemePage() {
 
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                A mosaic is created when individual pieces, each unique in color and shape,
-                come together to form a beautiful, cohesive image. Similarly, our world is
-                shaped by countless perspectives — each one adding depth, texture, and
-                meaning to our collective understanding.
+                The Wonka World celebrates bold ideas, colorful perspectives, and fearless experimentation. It represents a mindset where innovation is valued, risks are embraced, and failure is seen as a natural part of growth and learning.
               </p>
 
               <p>
-                At TEDxKIET 2025, we celebrate this diversity of thought. We bring together
-                speakers from various backgrounds — scientists, artists, entrepreneurs,
-                educators, and changemakers — each offering their unique piece of the mosaic.
+               Living the Wonka World also means challenging conventional thinking and questioning established norms. It inspires people to break boundaries, rethink systems, and approach problems with fresh and original perspectives.
               </p>
 
               <p>
-                Through their stories and ideas, we explore how embracing different
-                viewpoints leads to innovation, empathy, and transformative change.
+               At its heart, this theme highlights the importance of joy, gratitude, and mindfulness. From simple pleasures to grand discoveries, it reminds us to appreciate life’s magic and beauty.
+               Beyond fantasy, the Wonka World reflects real-world challenges and possibilities. Through imagination, it addresses themes such as social responsibility, environmental sustainability, and human potential.
               </p>
             </div>
           </div>
@@ -98,22 +92,22 @@ export default function ThemePage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
               {
-                title: "Diversity",
+                title: "Imagination",
                 description:
-                  "Celebrating the richness that comes from varied backgrounds, experiences, and ways of thinking.",
+                  "Encouraging limitless creativity and playful thinking to transform ordinary ideas into extraordinary possibilities.",
                 icon: "🌈",
               },
               {
-                title: "Connection",
+                title: "Innovation",
                 description:
-                  "Finding the threads that bind us together despite our differences.",
-                icon: "🔗",
+                  "Inspiring bold experimentation, risk-taking, and fresh approaches to solving real-world challenges.",
+                icon: "🚀",
               },
               {
-                title: "Transformation",
+                title: "Joy",
                 description:
-                  "Discovering how diverse perspectives catalyze meaningful change.",
-                icon: "✨",
+                  "Celebrating curiosity, wonder, and gratitude in everyday life while rediscovering the magic in simple moments.",
+                icon: "💫",
               },
             ].map((pillar, index) => (
               <div
