@@ -9,13 +9,7 @@ import { Redis } from "@upstash/redis";
 
 
 // ⭐ Rate limit – only active in production
-const ratelimit =
-  process.env.NODE_ENV === "production"
-    ? new Ratelimit({
-        redis,
-        limiter: Ratelimit.slidingWindow(5, "1 m"),
-      })
-    : null;
+
 
 // ⭐ ZOD SCHEMA
 const CheckoutSchema = z.object({
