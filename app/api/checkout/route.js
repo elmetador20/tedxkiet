@@ -6,6 +6,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
 // ⭐ Only initialize Redis in production
+export const runtime = "nodejs";
 const redis =
   process.env.NODE_ENV === "production"
     ? new Redis({
