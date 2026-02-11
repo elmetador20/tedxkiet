@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     creator: "@tedxkiet",
   },
   icons: {
-    icon: "/metadata.png",
-    apple: "/metadata.png",
+    icon: "/TEDX.jpg",
+    apple: "/TEDX.jpg",
   },
 
 }

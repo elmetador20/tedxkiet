@@ -8,12 +8,10 @@ import Image from "next/image"
 import TedxParticles from "@/components/tedxBacground"
 
 
-// Extract constants for better maintainability
 const EVENT_DATE = new Date("2025-04-10")
 const EVENT_DISPLAY_DATE = "April 10, 2026"
-const EVENT_LOCATION = "KIET Group of Institutions, Ghaziabad"
+const EVENT_LOCATION = "KIET Deemed to be University , Delhi NCR"
 
-// Extract stats data
 const STATS = [
   { number: "10+", label: "Events Organized" },
   { number: "50+", label: "Speakers Featured" },
@@ -21,7 +19,6 @@ const STATS = [
   { number: "10K+", label: "Online Views" },
 ] as const
 
-// Extract featured sections data
 const FEATURED_SECTIONS = [
   {
     title: "Our Speakers",
@@ -48,7 +45,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      {/* Hero Section with 3D Background */}
+  
       <section 
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         aria-labelledby="hero-heading"
@@ -218,7 +215,13 @@ export default function HomePage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-accent transition-all duration-500"
+                className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-accent transition-all duration-500  
+                  transition-all duration-300
+                  hover:border-accent hover:shadow-lg
+                  active:scale-95
+                  focus-visible:ring-2 focus-visible:ring-accent
+                  cursor-pointer
+                  outline-none"
               >
                 <div className="aspect-4/3 overflow-hidden">
                   <Image
