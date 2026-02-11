@@ -1,5 +1,3 @@
-
-
 "use client";
 import { ArrowRight, Check } from "lucide-react";
 import { useEffect, useState } from "react";
