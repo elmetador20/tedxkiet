@@ -24,17 +24,6 @@ const CheckoutSchema = z.object({
 export async function POST(req) {
   try {
     // ⭐ Apply rate-limiting in production only
-    if (ratelimit) {
-      const ip = req.headers.get("x-forwarded-for") || "unknown";
-      const { success } = await ratelimit.limit(ip);
-
-      if (!success) {
-        return NextResponse.json(
-          { error: "Too many requests. Try again later." },
-          { status: 429 }
-        );
-      }
-    }
 
     const body = await req.json();
 
