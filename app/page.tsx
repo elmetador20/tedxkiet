@@ -45,8 +45,8 @@ export default function HomePage() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-  
-      <section 
+
+      <section
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         aria-labelledby="hero-heading"
       >
@@ -56,7 +56,7 @@ export default function HomePage() {
         {/* Decorative blurs */}
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl" aria-hidden="true" />
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl" aria-hidden="true" />
-  
+
         <ParticlesBackground />
         <div className="tedx-hero-bg" aria-hidden="true" />
 
@@ -79,7 +79,7 @@ export default function HomePage() {
           </div>
 
           {/* Main heading */}
-          <h1 
+          <h1
             id="hero-heading"
             className="text-3xl sm:text-3xl md:text-5xl lg:text-8xl font-black tracking-tighter mb-10"
           >
@@ -92,7 +92,7 @@ export default function HomePage() {
           </p>
 
           {/* Countdown */}
-          <div className="mb-12">
+          <div className="mb-12  ">
             <CountdownTimer targetTime={EVENT_DATE} />
           </div>
 
@@ -130,10 +130,19 @@ export default function HomePage() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" aria-hidden="true">
-          <span className="text-xs tracking-[0.3em] uppercase text-muted-foreground">Scroll</span>
-          <div className="w-px h-12 bg-linear-to-b from-accent to-transparent" />
+        <div
+          className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          aria-hidden="true"
+        >
+          <span className="text-xs tracking-[0.3em] uppercase text-muted-foreground">
+            Scroll
+          </span>
+
+          <div className="relative w-px h-12 bg-gradient-to-b from-accent/60 to-transparent overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-3 bg-accent rounded-full animate-scroll-down" />
+          </div>
         </div>
+
       </section>
 
       {/* About Section */}
@@ -163,7 +172,7 @@ export default function HomePage() {
                 Learn More <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
-            
+
             <div className="relative">
               <div className="aspect-square rounded-3xl bg-linear-to-br from-accent/10 to-accent/5 p-1">
                 <div className="w-full h-full rounded-3xl bg-card flex items-center justify-center overflow-hidden">
