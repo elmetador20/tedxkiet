@@ -92,7 +92,7 @@ export default function HomePage() {
           </p>
 
           {/* Countdown */}
-          <div className="mb-12  ">
+          <div className="mb-12 ">
             <CountdownTimer targetTime={EVENT_DATE} />
           </div>
 

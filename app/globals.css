@@ -192,7 +192,7 @@ canvas {
   overflow: hidden;
 }
 
-/* Two diagonal lines forming X */
+/* Animated diagonal beams */
 .tedx-hero-bg::before,
 .tedx-hero-bg::after {
   content: "";
@@ -200,26 +200,54 @@ canvas {
   inset: -50%;
   background: linear-gradient(
     90deg,
-    transparent 45%,
-    rgba(230, 0, 0, 0.15) 50%,
-    transparent 55%
+    transparent 46%,
+    rgba(230, 0, 0, 0.18) 50%,
+    transparent 54%
   );
-  animation: moveX 8s linear infinite;
+  animation: moveBeam 10s ease-in-out infinite alternate;
+}
+
+.tedx-hero-bg::before {
+  transform: rotate(45deg);
 }
 
 .tedx-hero-bg::after {
-  transform: rotate(90deg);
-  animation-direction: reverse;
+  transform: rotate(-45deg);
 }
 
-@keyframes moveX {
+/* Center Glow */
+.tedx-hero-bg::marker {}
+
+/* Add a glowing radial center */
+.tedx-hero-bg {
+  background:
+    radial-gradient(circle at center,
+      rgba(230, 0, 0, 0.25) 0%,
+      rgba(230, 0, 0, 0.15) 15%,
+      transparent 40%);
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes moveBeam {
   0% {
-    transform: translateX(-20%) rotate(45deg);
+    transform: translateX(-10%) rotate(45deg);
   }
   100% {
-    transform: translateX(20%) rotate(45deg);
+    transform: translateX(10%) rotate(45deg);
   }
 }
+
+@keyframes pulseGlow {
+  0%, 100% {
+    background-size: 100% 100%;
+    opacity: 0.8;
+  }
+  50% {
+    background-size: 120% 120%;
+    opacity: 1;
+  }
+}
+
 
 @media (max-width: 768px) {
   .tedx-noise {
