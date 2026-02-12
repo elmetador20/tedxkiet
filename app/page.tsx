@@ -131,11 +131,11 @@ export default function HomePage() {
 
         {/* Scroll Indicator */}
         <div
-          className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           aria-hidden="true"
         >
           <span className="text-xs tracking-[0.3em] uppercase text-muted-foreground">
-            Scroll
+            
           </span>
 
           <div className="relative w-px h-12 bg-gradient-to-b from-accent/60 to-transparent overflow-hidden">
