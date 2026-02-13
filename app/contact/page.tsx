@@ -52,9 +52,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Address</h3>
                     <p className="text-muted-foreground">
-                      KIET Group of Institutions
+                      KIET Deemed to be University
                       <br />
-                      Ghaziabad, Uttar Pradesh
+                      Delhi NCR, Uttar Pradesh
                       <br />
                       India
                     </p>

@@ -130,9 +130,9 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/abhigyan-patel-8391a0303/",
   },
   {
-    name: "Ashlesha Azad",
+    name: "Aslesha Azad",
     role: "",
-    image: "/Aslesha.jpeg",
+    image: "/aslesha.jpeg",
     linkedin: "https://www.linkedin.com/in/aslesha-azad/",
   },
   {

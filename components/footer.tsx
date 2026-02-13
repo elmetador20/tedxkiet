@@ -59,7 +59,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                <span>KIET Deemed to be University, Ghaziabad, Uttar Pradesh, India</span>
+                <span>KIET Deemed to be University, Delhi NCR, Uttar Pradesh, India</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />

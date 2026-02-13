@@ -36,7 +36,7 @@ export default function PaymentPage() {
             <span className="text-red-600">TEDx</span> Payment
           </h1>
           <p className="text-gray-300 mt-2 text-sm tracking-wide">
-            Secure your spot for this year’s TEDxKIET Event
+            Secure your spot for this year&apos;s TEDxKIET Event
           </p>
         </div>
 

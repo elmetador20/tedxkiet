@@ -1,12 +1,15 @@
 "use client"
 
+import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { Play, ExternalLink } from "lucide-react"
+import { Play } from "lucide-react"
 import { speakers } from "@/data/speakers"
-import  Image from "next/image"
+import Image from "next/image"
 
 export default function SpeakersPage() {
+  const [active, setActive] = useState<number | null>(null)
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -14,21 +17,18 @@ export default function SpeakersPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
+        <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+          <span className="text-accent font-semibold tracking-wider uppercase text-sm">
+            The Voices
+          </span>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="text-accent font-semibold tracking-wider uppercase text-sm">
-              The Voices
-            </span>
+          <h1 className="text-5xl md:text-7xl font-black mt-4 mb-6">
+            Our <span className="text-accent">Speakers</span>
+          </h1>
 
-            <h1 className="text-5xl md:text-7xl font-black mt-4 mb-6">
-              Our <span className="text-accent">Speakers</span>
-            </h1>
-
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Visionaries, innovators, and change-makers who share ideas worth spreading on our stage.
-            </p>
-          </div>
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Visionaries, innovators, and change-makers who share ideas worth spreading on our stage.
+          </p>
         </div>
       </section>
 
@@ -37,126 +37,72 @@ export default function SpeakersPage() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            {speakers.map((speaker, index) => (
-              <div
-                key={index}
-                tabIndex={0}
-                onClick={(e) => e.currentTarget.focus()}
-                className="group relative overflow-hidden rounded-2xl
-                           bg-card border border-border
-                           transition-colors duration-500
-                           hover:border-accent
-                           focus-within:border-accent
-                           focus:outline-none"
-              >
+            {speakers.map((speaker, index) => {
+              const isOpen = active === index
 
-                {/* Image */}
-                <div className="aspect-[4/5] overflow-hidden relative">
-
-                  <Image
-                    src={speaker.image || "/placeholder.svg"}
-                    alt={speaker.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw,
-           (max-width: 1200px) 50vw,
-           33vw"
-                    className="object-cover
-               transition-transform duration-700
-               group-hover:scale-105
-               group-focus-within:scale-105"
-                    priority={index < 3}
-                  />
-                  {/* Overlay */}
+              return (
+                <div
+                  key={index}
+                  onClick={() =>
+                    setActive(isOpen ? null : index)
+                  }
+                  className="cursor-pointer rounded-2xl overflow-hidden bg-card border border-border hover:border-accent transition-all duration-500"
+                >
+                  {/* Image Container */}
                   <div
-                    className="absolute inset-0
-                               bg-gradient-to-t
-                               from-background
-                               via-background/50
-                               to-transparent"
-                  />
-                </div>
+                    className={`relative w-full overflow-hidden transition-all duration-500 ${
+                      isOpen ? "h-48" : "h-[400px]"
+                    }`}
+                  >
+                    <Image
+                      src={speaker.image || "/placeholder.svg"}
+                      alt={speaker.name}
+                      fill
+                      className={`object-cover transition-transform duration-700 ${
+                        isOpen ? "scale-105" : "scale-100"
+                      }`}
+                      sizes="(max-width:768px) 100vw,
+                             (max-width:1200px) 50vw,
+                             33vw"
+                      priority={index < 3}
+                    />
 
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
 
-                  <div className="inline-flex items-center gap-2
-                                  px-3 py-1 rounded-full
-                                  bg-accent/20 text-accent
-                                  text-sm font-medium mb-3">
+                    {/* Name & Topic (Always Visible) */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 text-accent text-sm font-medium mb-3">
+                        <Play className="w-3 h-3" />
+                        {speaker.topic}
+                      </div>
 
-                    <Play className="w-3 h-3" />
-                    {speaker.topic}
+                      <h3 className="text-2xl font-bold mb-1">
+                        {speaker.name}
+                      </h3>
+
+                      <p className="text-muted-foreground">
+                        {speaker.title}
+                      </p>
+                    </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-1">
-                    {speaker.name}
-                  </h3>
-
-                  <p className="text-muted-foreground">
-                    {speaker.title}
-                  </p>
+                  {/* Expandable Content */}
+                  <div
+                    className={`transition-all duration-500 overflow-hidden ${
+                      isOpen
+                        ? "max-h-[500px] opacity-100 p-6"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <p className="text-muted-foreground leading-relaxed text-sm">
+                      {speaker.description}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Action Button */}
-                <button
-                  aria-label="View speaker details"
-                  className="absolute top-4 right-4
-                             w-10 h-10 rounded-full
-                             bg-background/80 backdrop-blur
-                             flex items-center justify-center
-
-                             opacity-0
-                             transition-opacity duration-300
-
-                             group-hover:opacity-100
-                             group-focus-within:opacity-100
-
-                             hover:bg-accent
-                             hover:text-accent-foreground"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                </button>
-
-              </div>
-            ))}
+              )
+            })}
 
           </div>
-        </div>
-      </section>
-
-      {/* Past Talks */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-6">
-
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Watch Past Talks
-            </h2>
-
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              Relive the inspiring moments from our previous events.
-            </p>
-          </div>
-
-          <div className="flex justify-center">
-            <a
-              href="https://www.youtube.com/@tedxkiet"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3
-                         bg-accent hover:bg-accent/90
-                         text-accent-foreground
-                         px-8 py-4 rounded-full
-                         font-semibold
-
-                         transition-transform duration-300
-                         hover:scale-105"
-            >
-              <Play className="w-5 h-5" />
-              Watch on YouTube
-            </a>
-          </div>
-
         </div>
       </section>
 
