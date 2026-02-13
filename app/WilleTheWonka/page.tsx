@@ -1,8 +1,13 @@
+"use client"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { ArrowRight } from "lucide-react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { ChevronRight, ChevronLeft, ArrowRight } from "lucide-react"
 
 export default function ThemePage() {
+ const [isFlipped, setIsFlipped] = useState<boolean>(false)
+ const router=useRouter()
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -34,22 +39,72 @@ export default function ThemePage() {
             </div>
 
             {/* RIGHT: Card with Image */}
-            <div className="flex justify-center md:justify-end">
-              <div className="
-                bg-card
-                border border-border
+            <div className="flex justify-center md:justify-end relative">
+              <div className=" relative
+            
+               bg-card
+              border border-border
                 rounded-2xl
                 shadow-xl
                 p-4
                 w-[260px]
-                md:w-[340px]
-              ">
-                <img
-                  src="/wonka.jpeg"
-                  alt="Theme Poster"
-                  className="w-full h-auto rounded-xl object-contain"
-                />
+                md:w-[300px]  cursor-pointer group
+              " 
+                onClick={() => setIsFlipped(!isFlipped)}>
+                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-red-600/40 via-red-500/20 to-transparent blur-2xl opacity-60 group-hover:opacity-90 transition-all duration-500" ></div>
+                <div className="  bg-card border border-border rounded-2xl shadow-xl 
+                   group-hover:shadow-[0_20px_60px_rgba(255,0,0,0.35)] transition-transform duration-700 ease-out group-hover:-translate-y-3 group-hover:rotate-y-6" style={{
+                    transformStyle: "preserve-3d",
+                    transform: isFlipped ? "rotateY(180deg)" : undefined,
+                    backfaceVisibility: "hidden"
+                  }}>
+
+                  <img
+                    src="/wonka.jpeg"
+                    alt="Theme Poster"
+                    className="w-full h-auto rounded-xl object-contain"
+                  />
+                  {/* back */}
+                  <div
+                    className="absolute inset-0 w-full h-full bg-card border border-border rounded-2xl 
+             shadow-xl p-6 flex flex-col justify-center text-center
+             group-hover:shadow-[0_20px_60px_rgba(255,0,0,0.35)]"
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transform: "rotateY(180deg)",
+                    }}
+                  >
+                    <h3 className="text-2xl font-bold mb-4">
+                      The Hidden Third
+                    </h3>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                      When two ideas collide, they do not just add-they multiply.
+                      The hidden third force is belief, courage, and vision.
+                      This is where transformation begins.
+
+                    </p>
+                  </div>
+
+
+
+                </div>
               </div>
+<button
+  onClick={() => router.push("/")}
+  className="absolute -right-4 md:-right-25 top-1/2 -translate-y-1/2
+             bg-card border border-border
+             p-2 rounded-full rounde shadow-lg
+             hover:bg-accent hover:text-accent-foreground
+             transition-all duration-300 hover:scale-110
+             group"
+>
+  <div className="relative w-8 h-8 animate-arrowMove">
+    <ChevronRight className="absolute left-0 top-0" size={28} />
+    <ChevronRight className="absolute left-2 top-0 opacity-70" size={28} />
+  </div>
+</button>
+
+
             </div>
 
           </div>
