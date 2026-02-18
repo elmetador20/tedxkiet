@@ -3,11 +3,11 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { ChevronRight, ChevronLeft, ArrowRight } from "lucide-react"
+import { ChevronRight, ChevronLeft, ArrowRight, Link } from "lucide-react"
 
 export default function ThemePage() {
- const [isFlipped, setIsFlipped] = useState<boolean>(false)
- const router=useRouter()
+  const [isFlipped, setIsFlipped] = useState<boolean>(false)
+  const router = useRouter()
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -19,19 +19,29 @@ export default function ThemePage() {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            
+
             {/* LEFT: Text Content */}
             <div className="text-center md:text-left">
               <span className="text-accent font-semibold tracking-wider uppercase text-sm">
+                <a
+                  href="https://cart.godaddy.com/go/checkout?#/basket"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  
+                </a>
                 TEDxKIET 2023
               </span>
-
+              <link href="https://cart.godaddy.com/go/checkout?#/basket " className="block"></link>
               <h1 className="text-5xl md:text-7xl font-black mt-4 mb-6">
-                <span className="text-foreground">Living</span> 
+
+                <span className="text-foreground">Living</span>
                 <span className="text-foreground"> the</span>{" "}
                 <span className="text-accent">Wonka</span>
                 <span className="text-accent"> World</span>
               </h1>
+
 
               <p className="text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto md:mx-0">
                 This theme encourages individuals to embrace their inner child, unleash their imagination, and rediscover the joy of playful thinking. It invites the audience to explore how creativity and wonder can transform everyday experiences.
@@ -49,7 +59,7 @@ export default function ThemePage() {
                 p-4
                 w-[260px]
                 md:w-[300px]  cursor-pointer group
-              " 
+              "
                 onClick={() => setIsFlipped(!isFlipped)}>
                 <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-red-600/40 via-red-500/20 to-transparent blur-2xl opacity-60 group-hover:opacity-90 transition-all duration-500" ></div>
                 <div className="  bg-card border border-border rounded-2xl shadow-xl 
@@ -89,20 +99,20 @@ export default function ThemePage() {
 
                 </div>
               </div>
-<button
-  onClick={() => router.push("/")}
-  className="absolute -right-4 md:-right-25 top-1/2 -translate-y-1/2
+              <button
+                onClick={() => router.push("/")}
+                className="absolute -right-4 md:-right-25 top-1/2 -translate-y-1/2
              bg-card border border-border
              p-2 rounded-full rounde shadow-lg
              hover:bg-accent hover:text-accent-foreground
              transition-all duration-300 hover:scale-110
              group"
->
-  <div className="relative w-8 h-8 animate-arrowMove">
-    <ChevronRight className="absolute left-0 top-0" size={28} />
-    <ChevronRight className="absolute left-2 top-0 opacity-70" size={28} />
-  </div>
-</button>
+              >
+                <div className="relative w-8 h-8 animate-arrowMove">
+                  <ChevronRight className="absolute left-0 top-0" size={28} />
+                  <ChevronRight className="absolute left-2 top-0 opacity-70" size={28} />
+                </div>
+              </button>
 
 
             </div>
@@ -125,12 +135,12 @@ export default function ThemePage() {
               </p>
 
               <p>
-               Living the Wonka World also means challenging conventional thinking and questioning established norms. It inspires people to break boundaries, rethink systems, and approach problems with fresh and original perspectives.
+                Living the Wonka World also means challenging conventional thinking and questioning established norms. It inspires people to break boundaries, rethink systems, and approach problems with fresh and original perspectives.
               </p>
 
               <p>
-               At its heart, this theme highlights the importance of joy, gratitude, and mindfulness. From simple pleasures to grand discoveries, it reminds us to appreciate life’s magic and beauty.
-               Beyond fantasy, the Wonka World reflects real-world challenges and possibilities. Through imagination, it addresses themes such as social responsibility, environmental sustainability, and human potential.
+                At its heart, this theme highlights the importance of joy, gratitude, and mindfulness. From simple pleasures to grand discoveries, it reminds us to appreciate life’s magic and beauty.
+                Beyond fantasy, the Wonka World reflects real-world challenges and possibilities. Through imagination, it addresses themes such as social responsibility, environmental sustainability, and human potential.
               </p>
             </div>
           </div>
@@ -177,14 +187,14 @@ export default function ThemePage() {
           </div>
         </div>
       </section>
-       <div className="container mx-auto px-6 py-3.5 text-center">
-       <a
-            href="/"
-            className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-full font-semibold transition-all hover:scale-105"
-          >
-         Home <ArrowRight/>
-          </a>
-</div>
+      <div className="container mx-auto px-6 py-3.5 text-center">
+        <a
+          href="/"
+          className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-full font-semibold transition-all hover:scale-105"
+        >
+          Home <ArrowRight />
+        </a>
+      </div>
       <Footer />
     </div>
   )
