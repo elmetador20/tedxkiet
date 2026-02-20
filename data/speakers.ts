@@ -25,6 +25,14 @@ export const speakers: Speakers[] = [
     image: "/saqib-ayub.jpg",
     description: "Saqib Ayub, the 28-year-old acting sensation from Mumbai! From starring in Dharma’s “Brahmastra” to Raj & DK’s “Farzi” alongside Shahid Kapoor, his talent shines bright in every project. Trained in Hindustani theater, Saqib’s versatility extends to over 70 short plays and 50 commercials, including Spotify’s debut campaign in India."
   },
+   {
+    id: "5",
+    name: "Ella D verma",
+    title: "Indian Model, Influencer,",
+    topic: "TedxKIET 2023 Edition",
+    image: "/ella.jpg",
+    description: "She is a trailblazing model, content creator, influencer, and national-level debate champion.Her willpower, talent, and compassion have captured millions of hearts. Many people failed to comprehend the type of passion and intensity she endures. Her story of perseverance not only touches our hearts but also motivates us to move forward."
+  },
   {
     id: "3",
     name: "Nitin Pandey",
@@ -41,17 +49,10 @@ export const speakers: Speakers[] = [
     image: "/sunil.jpg",
     description: "Sunil Gupta, former jailor of Tihar Jail and acclaimed author of Black Warrant, challenges the way prison life is often portrayed to the public. With decades of experience inside one of India’s most complex correctional environments, he brings to light stories of resilience, hope, and humanity that rarely make headlines."
   },
-  {
-    id: "5",
-    name: "Ella D verma",
-    title: "Indian Model, Influencer,",
-    topic: "TedxKIET 2023 Edition",
-    image: "/ella.jpg",
-    description: "She is a trailblazing model, content creator, influencer, and national-level debate champion.Her willpower, talent, and compassion have captured millions of hearts. Many people failed to comprehend the type of passion and intensity she endures. Her story of perseverance not only touches our hearts but also motivates us to move forward."
-  },
+ 
   {
     id: "6",
-    name: "Prateek Rathi",
+    name: "Prateek Rathee",
     title: "Entrepreneur ",
     topic: "TedxKIET 2025 Edition",
     image: "/prateek.jpg",
@@ -63,7 +64,7 @@ export const speakers: Speakers[] = [
     title: " Ex-NSG Black Cat Commando and an Indian Army Veteran",
     topic: "TedxKIET 2025 Edition",
     image: "/col.jpg",
-    description: "Col. Rajeev Bagga (Retd.) is a decorated veteran of the Indian Army, having completed 32.5 years of distinguished service. A Jungle and Mountain Survival Expert, he has operated extensively in hostile terrains—especially in Jammu & Kashmir, where he spent over two decades combating terrorism. Several of his operations have been documented as case studies due to their strategic brilliance and execution."
+    description: "Col. Rajeev Bagga (Retd.) is a decorated veteran of the Indian Army, having completed 32.5 years of distinguished service. A Jungle and Mountain Survival Expert, he has operated extensively in hostile terrains—especially in Jammu & Kashmir, where he spent over two decades combating terrorism."
   },
    {
     id: "8",
