@@ -35,7 +35,7 @@ const navLinks: NavItem[] = [
     label: "Speakers",
     dropdown: [
       { href: "/speakers", label: "Our Past Speakers" },
-      { href: "/speakers#new", label: "New Speakers" },
+      { href: "/newSpeakers", label: "New Speakers" },
       { href: "/contact#speak", label: "Apply To Speak" },
     ],
   },
@@ -178,7 +178,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-2 opacity-80">
             <Link
-              href="/payments"
+              href="/paymentsSoon"
               className="bg-accent text-accent-foreground px-5 py-2 rounded-full font-semibold text-sm hover:scale-105 transition"
             >
               Get Tickets
@@ -289,7 +289,7 @@ export function Navbar() {
 
             {/* CTA */}
             <Link
-              href="/payments"
+              href="/paymentsSoon"
               onClick={closeMobile}
               className="block w-full mt-6 bg-accent text-accent-foreground py-3 rounded-full text-center font-semibold"
             >

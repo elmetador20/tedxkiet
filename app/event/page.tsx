@@ -22,7 +22,7 @@ export default function EventPage() {
               <span className="text-accent">x</span>
               <span className="text-foreground">KIET</span>
               <br />
-              <span className="text-accent">2025</span>
+              <span className="text-accent">2026</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-12">
               An immersive experience where groundbreaking ideas meet passionate minds. Be part of something

@@ -156,7 +156,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Tanishque Baranwal",
     role: "",
-    image: "/Ragahav.jpeg",
+    image: "/tan.jpeg",
     linkedin: "https://www.linkedin.com/in/tanishque-baranwal-7149a52a7/",
   },
 ]
