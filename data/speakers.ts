@@ -34,6 +34,14 @@ export const speakers: Speakers[] = [
     description: "She is a trailblazing model, content creator, influencer, and national-level debate champion.Her willpower, talent, and compassion have captured millions of hearts. Many people failed to comprehend the type of passion and intensity she endures. Her story of perseverance not only touches our hearts but also motivates us to move forward."
   },
   {
+    id: "8",
+    name: "Wily Frenzy",
+    title: "Producer, Indian DJ ",
+    topic: "TedxKIET 2023 Edition",
+    image: "/prateek.jpg",
+    description: "Wily Frenzy Aka Yash Nagar is a Record Producer, Indian DJ and an extraordinary individual who has defied the odds and inspired many with his remarkable journey.Wily faced a childhood filled with challenges and uncertainty but he refused to let his condition define him and instead, used his creativity and determination to push the boundaries of what was possible."
+  },
+  {
     id: "3",
     name: "Nitin Pandey",
     title: "Cyber Security Expert, Security Researcher",
@@ -66,14 +74,7 @@ export const speakers: Speakers[] = [
     image: "/col.jpg",
     description: "Col. Rajeev Bagga (Retd.) is a decorated veteran of the Indian Army, having completed 32.5 years of distinguished service. A Jungle and Mountain Survival Expert, he has operated extensively in hostile terrains—especially in Jammu & Kashmir, where he spent over two decades combating terrorism."
   },
-   {
-    id: "8",
-    name: "Wily Frenzy",
-    title: "Producer, Indian DJ ",
-    topic: "TedxKIET 2023 Edition",
-    image: "/prateek.jpg",
-    description: "Wily Frenzy Aka Yash Nagar is a Record Producer, Indian DJ and an extraordinary individual who has defied the odds and inspired many with his remarkable journey.Wily faced a childhood filled with challenges and uncertainty but he refused to let his condition define him and instead, used his creativity and determination to push the boundaries of what was possible."
-  },
+   
    {
     id: "9",
     name: "Shen B",
