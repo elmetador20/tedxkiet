@@ -22,3 +22,14 @@ model Order {
   branch              String?
   createdAt         DateTime @default(now())
 }
+
+model TicketRegistration {
+  id        String   @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String
+  phone     String
+  rollNo    String
+  branch    String
+  createdAt DateTime @default(now())
+}
