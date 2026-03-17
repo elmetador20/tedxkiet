@@ -1,11 +1,17 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight, Calendar, MapPin, Play } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ParticlesBackground } from "@/components/ui/3d-particles-background"
+import { StaggerReveal, StaggerItem } from "@/components/ui/stagger-reveal"
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import CountdownTimer from "@/components/countdown-timer"
+import { useTicketModal } from "@/hooks/use-ticket-modal"
 import Image from "next/image"
 import TedxParticles from "@/components/tedxBacground"
+import { AnimatedPoster } from "@/components/animated-poster"
 
 
 const EVENT_DATE = new Date("2025-04-10")
@@ -41,10 +47,15 @@ const FEATURED_SECTIONS = [
 ] as const
 
 export default function HomePage() {
+  const { openModal } = useTicketModal()
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
+      <ScrollReveal animation="fade-up" yOffset={60}>
+        <AnimatedPoster />
+      </ScrollReveal>
 
       <section
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -98,13 +109,13 @@ export default function HomePage() {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/event"
+            <button
+              onClick={openModal}
               className="group inline-flex items-center gap-3 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
             >
-              Events
+              Get Ticket
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-            </Link>
+            </button>
             <Link
               href="http://tedxkiet.herolinks.ca"
               className="inline-flex items-center gap-3 border border-border hover:border-foreground bg-background/50 backdrop-blur-sm px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-background/80"
@@ -138,9 +149,6 @@ export default function HomePage() {
             
           </span>
 
-          <div className="relative w-px h-12 bg-gradient-to-b from-accent/60 to-transparent overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-3 bg-accent rounded-full animate-scroll-down" />
-          </div>
         </div>
 
       </section>
@@ -149,7 +157,7 @@ export default function HomePage() {
       <section className="py-32 bg-card" aria-labelledby="about-heading">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <ScrollReveal animation="slide-right">
               <span className="text-accent font-semibold tracking-wider uppercase text-sm">About TEDx</span>
               <h2 id="about-heading" className="text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
                 <span className="text-foreground">TED</span>
@@ -171,9 +179,9 @@ export default function HomePage() {
               >
                 Learn More <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
-            </div>
+            </ScrollReveal>
 
-            <div className="relative">
+            <ScrollReveal animation="slide-left" delay={0.2} className="relative">
               <div className="aspect-square rounded-3xl bg-linear-to-br from-accent/10 to-accent/5 p-1">
                 <div className="w-full h-full rounded-3xl bg-card flex items-center justify-center overflow-hidden">
                   <Image
@@ -187,7 +195,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-accent rounded-full blur-3xl opacity-30" aria-hidden="true" />
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -196,71 +204,66 @@ export default function HomePage() {
       <section className="py-20 border-y border-border" aria-labelledby="stats-heading">
         <div className="container mx-auto px-6">
           <h2 id="stats-heading" className="sr-only">TEDxKIET Statistics</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <StaggerReveal className="grid grid-cols-2 md:grid-cols-4 gap-8" stagger={0.15}>
             {STATS.map((stat, index) => (
-              <div key={index} className="text-center">
+              <StaggerItem key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-black text-accent mb-2" aria-label={`${stat.number} ${stat.label}`}>
                   {stat.number}
                 </div>
                 <div className="text-muted-foreground font-medium">{stat.label}</div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
       {/* Featured Sections */}
       <section className="py-32" aria-labelledby="featured-heading">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <ScrollReveal animation="fade-up" className="text-center mb-16">
             <span className="text-accent font-semibold tracking-wider uppercase text-sm">Explore</span>
             <h2 id="featured-heading" className="text-4xl md:text-5xl font-bold mt-4">
               Discover TEDxKIET
             </h2>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerReveal className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" stagger={0.2}>
             {FEATURED_SECTIONS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-accent transition-all duration-500  
-                  transition-all duration-300
-                  hover:border-accent hover:shadow-lg
-                  active:scale-95
-                  focus-visible:ring-2 focus-visible:ring-accent
-                  cursor-pointer
-                  outline-none"
-              >
-                <div className="aspect-4/3 overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={`${item.title} - ${item.description}`}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-background via-background/50 to-transparent" aria-hidden="true" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-2xl font-bold mb-2 group-hover:text-accent transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                  <div className="flex items-center gap-2 mt-4 text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                    Explore <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <StaggerItem key={item.href}>
+                <Link
+                  href={item.href}
+                  className="group relative block overflow-hidden rounded-2xl bg-card border border-border hover:border-accent transition-all duration-300 hover:shadow-lg active:scale-95 focus-visible:ring-2 focus-visible:ring-accent cursor-pointer outline-none h-full"
+                >
+                  <div className="aspect-4/3 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={`${item.title} - ${item.description}`}
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-background via-background/50 to-transparent" aria-hidden="true" />
                   </div>
-                </div>
-              </Link>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground">{item.description}</p>
+                    <div className="flex items-center gap-2 mt-4 text-accent font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                      Explore <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    </div>
+                  </div>
+                </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-32 bg-accent" aria-labelledby="cta-heading">
-        <div className="container mx-auto px-6 text-center">
+        <ScrollReveal animation="zoom-in" className="container mx-auto px-6 text-center">
           <h2 id="cta-heading" className="text-4xl md:text-6xl font-black text-accent-foreground mb-6">
             Ready to be Inspired?
           </h2>
@@ -268,12 +271,12 @@ export default function HomePage() {
             Join us for an unforgettable experience where ideas come alive and connections are made.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/event"
-              className="inline-flex items-center gap-3 bg-background text-foreground px-8 py-4 rounded-full font-semibold text-lg hover:bg-foreground hover:text-background transition-all duration-300"
+            <button
+              onClick={openModal}
+              className="inline-flex items-center gap-3 bg-background text-foreground px-8 py-4 rounded-full font-semibold text-lg hover:bg-foreground hover:text-background transition-all duration-300 cursor-pointer"
             >
               Register Now <ArrowRight className="w-5 h-5" aria-hidden="true" />
-            </Link>
+            </button>
             <Link
               href="/contact"
               className="inline-flex items-center gap-3 border-2 border-accent-foreground text-accent-foreground px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-foreground hover:text-accent transition-all duration-300"
@@ -281,7 +284,7 @@ export default function HomePage() {
               Contact Us
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <Footer />

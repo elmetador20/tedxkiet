@@ -4,6 +4,8 @@ import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { TicketModalProvider } from "@/hooks/use-ticket-modal"
+import { TicketOverlay } from "@/components/ui/ticket-overlay"
 import "./globals.css"
 
 
@@ -46,9 +48,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-         
-          {children}
-           
+          <TicketModalProvider>
+            {children}
+            <TicketOverlay />
+          </TicketModalProvider>
         </ThemeProvider>
        
         <Analytics />

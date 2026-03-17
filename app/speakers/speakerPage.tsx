@@ -6,6 +6,8 @@ import { Footer } from "@/components/footer"
 import { Play } from "lucide-react"
 import { speakers } from "@/data/speakers"
 import Image from "next/image"
+import { StaggerReveal, StaggerItem } from "@/components/ui/stagger-reveal"
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
 
 export default function SpeakersPage() {
   const [active, setActive] = useState<number | null>(null)
@@ -17,7 +19,7 @@ export default function SpeakersPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent" />
-        <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+        <ScrollReveal animation="fade-up" className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
           <span className="text-accent font-semibold tracking-wider uppercase text-sm">
             The Voices
           </span>
@@ -29,20 +31,22 @@ export default function SpeakersPage() {
           <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Visionaries, innovators, and change-makers who share ideas worth spreading on our stage.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Speakers Grid */}
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <StaggerReveal className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.15}>
 
             {speakers.map((speaker, index) => {
               const isOpen = active === index
 
               return (
-                <div
+                <StaggerItem
                   key={index}
+                >
+                  <div
                   onClick={() =>
                     setActive(isOpen ? null : index)
                   }
@@ -99,10 +103,11 @@ export default function SpeakersPage() {
                     </p>
                   </div>
                 </div>
+                </StaggerItem>
               )
             })}
 
-          </div>
+          </StaggerReveal>
         </div>
       </section>
     </div>

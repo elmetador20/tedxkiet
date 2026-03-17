@@ -6,6 +6,8 @@ import Link from "next/link"
 import { ArrowRight, Linkedin } from "lucide-react"
 
 import { teamMembers, TeamMember } from "@/data/members"
+import { StaggerReveal, StaggerItem } from "@/components/ui/stagger-reveal"
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
 
 
 export default function TeamClient() {
@@ -24,7 +26,7 @@ export default function TeamClient() {
         <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black via-black/80 to-transparent z-10" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black via-black/80 to-transparent z-10" />
 
-        <section className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        <ScrollReveal animation="fade-up" className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1 className="text-5xl md:text-7xl font-black text-white">
            MEET OUR <span className="text-red-600">TEAM</span>
           </h1>
@@ -32,7 +34,7 @@ export default function TeamClient() {
           <p className="mt-6 max-w-2xl mx-auto text-gray-300 text-lg">
             Meet the passionate people behind TEDxKIET
           </p>
-        </section>
+        </ScrollReveal>
       </div>
 
       {/* TEAM */}
@@ -69,20 +71,22 @@ export default function TeamClient() {
 
       {/* CTA */}
       <section className="py-20 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-          Want to Join Our Team?
-        </h2>
+        <ScrollReveal animation="zoom-in" yOffset={30}>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Want to Join Our Team?
+          </h2>
 
-        <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-          We are always looking for motivated people to work with us.
-        </p>
+          <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+            We are always looking for motivated people to work with us.
+          </p>
 
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-8 py-4 rounded-full font-semibold text-white transition hover:scale-105"
-        >
-          Home <ArrowRight className="w-5 h-5" />
-        </Link>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-8 py-4 rounded-full font-semibold text-white transition hover:scale-105"
+          >
+            Home <ArrowRight className="w-5 h-5" />
+          </Link>
+        </ScrollReveal>
       </section>
     </div>
   )
@@ -99,21 +103,22 @@ interface SectionProps {
 
 function TeamSection({ title, members, cols, big }: SectionProps) {
   return (
-    <div className="border-b-2 border-white rounded-2xl p-8 bg-black/40 backdrop-blur">
+    <ScrollReveal animation="fade-up" className="border-b-2 border-white rounded-2xl p-8 bg-black/40 backdrop-blur">
       <h2 className="text-center text-3xl font-bold text-white mb-10">
         {title}
       </h2>
 
-      <div className={`grid grid-cols-1 sm:grid-cols-2 ${cols} gap-10`}>
+      <StaggerReveal className={`grid grid-cols-1 sm:grid-cols-2 ${cols} gap-10`} stagger={0.15}>
         {members.map((member) => (
-          <MemberCard
-            key={member.name}
-            member={member}
-            big={big}
-          />
+          <StaggerItem key={member.name}>
+            <MemberCard
+              member={member}
+              big={big}
+            />
+          </StaggerItem>
         ))}
-      </div>
-    </div>
+      </StaggerReveal>
+    </ScrollReveal>
   )
 }
 

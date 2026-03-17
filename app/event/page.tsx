@@ -1,9 +1,15 @@
+"use client"
+
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Calendar, MapPin, Clock, Users, ArrowRight, CheckCircle } from "lucide-react"
 import { toast } from "sonner"
+import { StaggerReveal, StaggerItem } from "@/components/ui/stagger-reveal"
+import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { useTicketModal } from "@/hooks/use-ticket-modal"
 
 export default function EventPage() {
+  const { openModal } = useTicketModal()
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -44,23 +50,23 @@ export default function EventPage() {
               ))}
             </div>
 
-            <a
-              href="#register"
-              className="inline-flex items-center gap-3 bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-105"
+            <button
+              onClick={openModal}
+              className="inline-flex items-center gap-3 bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-5 rounded-full font-bold text-lg transition-all hover:scale-105 cursor-pointer"
             >
-              Register Interest <ArrowRight className="w-5 h-5" />
-            </a>
+              Get Ticket <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
 
       {/* What to Expect */}
       <section className="py-20 bg-card">
-        <div className="container mx-auto px-6">
+        <ScrollReveal animation="fade-up" className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold">What to Expect</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <StaggerReveal className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.15}>
             {[
               {
                 title: "Inspiring Talks",
@@ -87,21 +93,21 @@ export default function EventPage() {
                 description: "Take home exclusive TEDxKIET merchandise as a memento.",
               },
             ].map((item, index) => (
-              <div key={index} className="flex gap-4">
+              <StaggerItem key={index} className="flex gap-4">
                 <CheckCircle className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p className="text-muted-foreground">{item.description}</p>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
-        </div>
+          </StaggerReveal>
+        </ScrollReveal>
       </section>
 
       {/* Registration Form */}
       <section id="register" className="py-20">
-        <div className="container mx-auto px-6">
+        <ScrollReveal animation="fade-up" className="container mx-auto px-6" yOffset={50}>
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">Register Your Interest</h2>
@@ -159,14 +165,15 @@ export default function EventPage() {
                 />
               </div>
               <button
-                type="submit"
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02]"
+                type="button"
+                onClick={openModal}
+                className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] cursor-pointer"
               >
-                Submit Registration
+                Proceed to Payment <ArrowRight className="w-5 h-5" />
               </button>
             </form>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <Footer />
