@@ -38,7 +38,7 @@ export const speakers: Speakers[] = [
     name: "Wily Frenzy",
     title: "Producer, Indian DJ ",
     topic: "TedxKIET 2023 Edition",
-    image: "/prateek.jpg",
+    image: "/WilyFrenzy1.jpg",
     description: "Wily Frenzy Aka Yash Nagar is a Record Producer, Indian DJ and an extraordinary individual who has defied the odds and inspired many with his remarkable journey.Wily faced a childhood filled with challenges and uncertainty but he refused to let his condition define him and instead, used his creativity and determination to push the boundaries of what was possible."
   },
   {
